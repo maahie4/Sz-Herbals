@@ -202,9 +202,27 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
 
+/* HAMBURGER */
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:28px;height:20px;position:relative;z-index:201;}
+.hamburger span{display:block;width:100%;height:1.5px;background:var(--deep);position:absolute;left:0;transition:all .35s ease;}
+.hamburger span:nth-child(1){top:0;}
+.hamburger span:nth-child(2){top:50%;transform:translateY(-50%);}
+.hamburger span:nth-child(3){bottom:0;}
+.hamburger.active span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){bottom:auto;top:50%;transform:translateY(-50%) rotate(-45deg);}
+
+/* MOBILE OVERLAY */
+.mobile-overlay{position:fixed;inset:0;background:rgba(15,43,36,.97);backdrop-filter:blur(16px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s ease;}
+.mobile-overlay.open{opacity:1;pointer-events:auto;}
+.mobile-nav-link{font-family:var(--sans);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);text-decoration:none;padding:.6rem 1rem;transition:color .3s;}
+.mobile-nav-link:hover{color:var(--warm);}
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem;}
   .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .hamburger{display:block;}
   .hero{grid-template-columns:1fr;}
   .hero-left{padding:7rem 2rem 3rem;}
   .hero-right{height:60vw;}
@@ -215,6 +233,13 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
   .science-stats{grid-template-columns:1fr;}
   .cta{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+
+@media(max-width:500px){
+  .hero-left{padding:6rem 1.4rem 3rem;}
+  .section,.mechanism,.ingredients,.science,.dosage,.testimonials,.faq,.cta,footer,.disclaimer{padding:3rem 1.4rem;}
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .footer-grid{grid-template-columns:1fr;gap:2rem;}
 }
 </style>
 </head>
@@ -232,7 +257,20 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
     <li><a href="#reviews">Reviews</a></li>
   </ul>
   <a href="orderform.html" class="nav-cta">Order Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="#hepatitis" class="mobile-nav-link">What is Hepatitis</a>
+  <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+  <a href="#ingredients" class="mobile-nav-link">Ingredients</a>
+  <a href="#dosage" class="mobile-nav-link">Dosage</a>
+  <a href="#reviews" class="mobile-nav-link">Reviews</a>
+  <a href="orderform.html" class="mobile-nav-link">Order Now</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -766,6 +804,22 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+// Mobile menu
+const hamburger=document.getElementById('hamburger');
+const mobileOverlay=document.getElementById('mobileOverlay');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('active');
+  mobileOverlay.classList.toggle('open');
+  document.body.style.overflow=mobileOverlay.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mobile-nav-link').forEach(link=>{
+  link.addEventListener('click',()=>{
+    hamburger.classList.remove('active');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow='';
+  });
+});
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('load',()=>{
