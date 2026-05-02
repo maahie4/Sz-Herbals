@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SZ Herbals — Rooted in Nature</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep:    #1e3d35;
+      --mid:     #2D5C52;
+      --leaf:    #3D7A68;
+      --sage:    #7AAF9E;
+      --mist:    #B8D4CC;
+      --fog:     #E4EFEb;
+      --cream:   #F7F4EE;
+      --navy:    #2B5A6E;
+      --ink:     #1a2e28;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      overflow-x: hidden;
+    }
+
+    /* PAGE LOADER */
+    .page-loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--deep);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .page-loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo {
+      width: 60px; height: 60px;
+      animation: loaderPulse 1.2s ease-in-out infinite;
+    }
+    .loader-text {
+      font-family: var(--serif); font-size: 1.2rem;
+      color: var(--mist); margin-top: 1.2rem;
+      letter-spacing: 0.1em; font-weight: 300;
+      animation: loaderFade 1.2s ease-in-out infinite;
+    }
+    .loader-bar {
+      width: 120px; height: 1px; background: rgba(255,255,255,0.1);
+      margin-top: 2rem; position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; left: 0; top: 0;
+      height: 100%; width: 40%; background: var(--sage);
+      animation: loaderSlide 1s ease-in-out infinite;
+    }
+    @keyframes loaderPulse { 0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)} }
+    @keyframes loaderFade { 0%,100%{opacity:0.5}50%{opacity:1} }
+    @keyframes loaderSlide { 0%{left:-40%}100%{left:100%} }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem 4rem;
+      transition: background 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(247,244,238,0.96);
+      backdrop-filter: blur(10px);
+      padding: 1rem 4rem;
+      border-bottom: 0.5px solid var(--mist);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--deep);
+      letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .nav-logo svg { width: 28px; height: 28px; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0; height: 0.5px;
+      background: var(--leaf);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--leaf); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--mid);
+      padding: 0.7rem 1.6rem;
+      border: none;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--deep); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 10rem 5rem 6rem 8rem;
+      position: relative; z-index: 2;
+    }
+    .hero-tag {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 30px; height: 0.5px;
+      background: var(--sage);
+    }
+    .hero-title {
+      font-size: clamp(3.4rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.06;
+      color: var(--deep);
+      margin-bottom: 2rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--leaf);
+    }
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+      color: var(--mid);
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+    .hero-btns { display: flex; gap: 1.2rem; align-items: center; }
+    .btn-primary {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--mid);
+      padding: 1rem 2.4rem;
+      border: none;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--deep); transform: translateY(-1px); }
+    .btn-ghost {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--leaf); }
+    .btn-ghost svg { width: 14px; height: 14px; transition: transform 0.3s; }
+    .btn-ghost:hover svg { transform: translateX(4px); }
+
+    .hero-right {
+      position: relative;
+      background: var(--fog);
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(61,122,104,0.12) 0%, transparent 70%);
+    }
+    .hero-botanical {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-botanical svg {
+      width: 85%;
+      height: 85%;
+      opacity: 0.9;
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sage);
+      animation: bobble 2s ease-in-out infinite;
+    }
+    .hero-scroll-line {
+      width: 0.5px; height: 40px; background: var(--mist);
+      animation: grow 2s ease-in-out infinite;
+    }
+    @keyframes bobble { 0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)} }
+    @keyframes grow { 0%,100%{opacity:0.4;height:30px}50%{opacity:1;height:50px} }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: var(--deep);
+      padding: 1rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mist);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; gap: 2.5rem;
+    }
+    .marquee-dot { width: 4px; height: 4px; background: var(--sage); border-radius: 50%; flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ABOUT STRIP */
+    .about {
+      padding: 7rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-label {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.4rem;
+    }
+    .about-heading {
+      font-size: clamp(2.2rem, 3vw, 3.2rem);
+      font-weight: 300; line-height: 1.2;
+      color: var(--deep);
+    }
+    .about-heading em { font-style: italic; color: var(--leaf); }
+    .about-right p {
+      font-family: var(--sans); font-size: 0.82rem;
+      line-height: 2; font-weight: 300;
+      color: var(--mid); margin-bottom: 1.4rem;
+    }
+    .about-stats {
+      display: flex; gap: 3rem; margin-top: 2.4rem;
+      padding-top: 2.4rem; border-top: 0.5px solid var(--mist);
+    }
+    .stat-num {
+      font-size: 2.6rem; font-weight: 300;
+      color: var(--deep); line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--sans); font-size: 0.65rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage); margin-top: 0.4rem;
+    }
+
+    /* PILLARS */
+    .pillars {
+      background: var(--deep);
+      padding: 7rem 8rem;
+    }
+    .pillars-head {
+      text-align: center; margin-bottom: 5rem;
+    }
+    .pillars-head h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 300; color: var(--cream);
+    }
+    .pillars-head h2 em { font-style: italic; color: var(--sage); }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .pillar {
+      background: var(--deep);
+      padding: 3.5rem 2.8rem;
+      transition: background 0.4s, box-shadow 0.4s, transform 0.4s;
+      position: relative; overflow: hidden;
+    }
+    .pillar::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: linear-gradient(90deg, var(--leaf), var(--sage));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s;
+    }
+    .pillar:hover {
+      background: rgba(61,122,104,0.1);
+      box-shadow: 0 8px 30px rgba(61,122,104,0.15);
+      transform: translateY(-4px);
+    }
+    .pillar:hover::before { transform: scaleX(1); }
+    .pillar-icon {
+      width: 48px; height: 48px; margin-bottom: 2rem;
+      opacity: 0.7;
+    }
+    .pillar h3 {
+      font-size: 1.5rem; font-weight: 300;
+      color: var(--cream); margin-bottom: 1rem;
+    }
+    .pillar p {
+      font-family: var(--sans); font-size: 0.78rem;
+      line-height: 1.9; font-weight: 300;
+      color: var(--mist);
+    }
+    .pillar-num {
+      position: absolute; bottom: 2rem; right: 2.4rem;
+      font-size: 4.5rem; font-weight: 300;
+      color: rgba(255,255,255,0.04); line-height: 1;
+      font-style: italic;
+    }
+
+    /* PRODUCTS */
+    .products {
+      padding: 7rem 8rem;
+      background: var(--cream);
+    }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+    .section-label {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 300; color: var(--deep);
+    }
+    .section-title em { font-style: italic; color: var(--leaf); }
+    .view-all {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .view-all:hover { color: var(--leaf); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 760px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+    .product-card {
+      position: relative; overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(30,61,53,0.1);
+    }
+    .product-img {
+      height: 340px;
+      background: var(--fog);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+      transition: transform 0.6s ease;
+    }
+    .product-card:hover .product-img { transform: scale(1.03); }
+    .product-img svg {
+      width: 55%; height: 55%; opacity: 0.7;
+      transition: transform 0.6s ease, opacity 0.4s;
+    }
+    .product-card:hover .product-img svg { transform: scale(1.08); opacity: 0.9; }
+    .product-tag-badge {
+      position: absolute; top: 1.2rem; left: 1.2rem;
+      font-family: var(--sans); font-size: 0.6rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--deep); background: var(--cream);
+      padding: 0.35rem 0.8rem;
+    }
+    .product-info { padding: 1.4rem 0; }
+    .product-name {
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--deep); margin-bottom: 0.3rem;
+    }
+    .product-desc {
+      font-family: var(--sans); font-size: 0.72rem;
+      color: var(--sage); font-weight: 300;
+      letter-spacing: 0.04em; margin-bottom: 0.8rem;
+    }
+    .product-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 0.8rem; border-top: 0.5px solid var(--mist);
+    }
+    .product-price {
+      font-size: 1.1rem; font-weight: 300; color: var(--mid);
+    }
+    .product-add {
+      font-family: var(--sans); font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--leaf); background: none; border: none;
+      transition: color 0.3s; padding: 0;
+    }
+    .product-add:hover { color: var(--deep); }
+
+    /* PROCESS */
+    .process {
+      background: var(--fog);
+      padding: 7rem 8rem;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+      margin-top: 5rem;
+      position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%;
+      height: 0.5px; background: var(--mist);
+      z-index: 0;
+    }
+    .process-step {
+      padding: 0 2rem;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .process-dot {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 0.5px solid var(--mist);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .process-step:hover .process-dot {
+      background: var(--mid);
+      border-color: var(--mid);
+    }
+    .process-dot svg { width: 22px; height: 22px; }
+    .process-step:hover .process-dot svg path,
+    .process-step:hover .process-dot svg circle,
+    .process-step:hover .process-dot svg line { stroke: var(--cream) !important; }
+    .process-step h4 {
+      font-size: 1.1rem; font-weight: 400;
+      color: var(--deep); margin-bottom: 0.6rem;
+    }
+    .process-step p {
+      font-family: var(--sans); font-size: 0.72rem;
+      line-height: 1.8; font-weight: 300; color: var(--mid);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 7rem 8rem;
+      background: var(--cream);
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .testi-card {
+      background: var(--fog);
+      padding: 2.5rem;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .testi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(30,61,53,0.08);
+    }
+    .testi-quote {
+      font-size: 3rem; line-height: 1;
+      color: var(--mist); margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .testi-text {
+      font-size: 1.05rem; font-weight: 300;
+      line-height: 1.7; color: var(--deep);
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .testi-author {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage);
+    }
+    .testi-stars { color: var(--leaf); font-size: 0.75rem; margin-bottom: 0.8rem; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: var(--mid);
+      padding: 6rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 4rem;
+    }
+    .cta-banner h2 {
+      font-size: clamp(2rem,3vw,3.2rem);
+      font-weight: 300; color: var(--cream);
+    }
+    .cta-banner h2 em { font-style: italic; color: var(--mist); }
+    .cta-banner p {
+      font-family: var(--sans); font-size: 0.78rem;
+      line-height: 1.9; font-weight: 300;
+      color: var(--mist); margin-top: 1rem; max-width: 480px;
+    }
+    .btn-light {
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--deep); background: var(--cream);
+      padding: 1.1rem 2.6rem; border: none;
+      white-space: nowrap; text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-light:hover { background: var(--fog); transform: translateY(-1px); }
+
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 6rem 8rem;
+      background: var(--fog);
+      display: flex; justify-content: center;
+    }
+    .newsletter-inner {
+      max-width: 640px; width: 100%; text-align: center;
+    }
+    .newsletter-inner h2 {
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      font-weight: 300; color: var(--deep);
+      margin-bottom: 0.8rem;
+    }
+    .newsletter-inner h2 em { font-style: italic; color: var(--leaf); }
+    .newsletter-inner p {
+      font-family: var(--sans); font-size: 0.78rem;
+      line-height: 1.9; font-weight: 300;
+      color: var(--mid); margin-bottom: 2.4rem;
+    }
+    .newsletter-form {
+      display: flex; gap: 0; max-width: 480px; margin: 0 auto;
+      background: var(--cream);
+      border: 0.5px solid var(--mist);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .newsletter-form:focus-within { border-color: var(--sage); }
+    .newsletter-form input {
+      flex: 1; padding: 1rem 1.4rem;
+      border: none; outline: none; background: transparent;
+      font-family: var(--sans); font-size: 0.78rem;
+      color: var(--deep); font-weight: 300;
+    }
+    .newsletter-form input::placeholder { color: var(--sage); opacity: 0.7; }
+    .newsletter-form button {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream); background: var(--mid);
+      border: none; padding: 1rem 2rem;
+      cursor: pointer; transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--deep); }
+    .newsletter-trust {
+      font-family: var(--sans); font-size: 0.62rem;
+      color: var(--sage); margin-top: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* FLOATING PARTICLES */
+    .hero-particles {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      overflow: hidden;
+    }
+    .leaf-particle {
+      position: absolute;
+      width: 8px; height: 8px;
+      opacity: 0;
+      animation: leafFloat linear infinite;
+    }
+    .leaf-particle svg { width: 100%; height: 100%; }
+    @keyframes leafFloat {
+      0% { opacity: 0; transform: translateY(100%) rotate(0deg); }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep);
+      padding: 5rem 8rem 2.5rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand p {
+      font-family: var(--sans); font-size: 0.75rem;
+      line-height: 1.9; font-weight: 300;
+      color: var(--mist); margin-top: 1.2rem;
+    }
+    .footer-col h5 {
+      font-family: var(--sans); font-size: 0.65rem;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.4rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.7rem; }
+    .footer-col ul li a {
+      font-family: var(--sans); font-size: 0.75rem;
+      font-weight: 300; color: var(--mist);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem;
+    }
+    .footer-bottom p {
+      font-family: var(--sans); font-size: 0.65rem;
+      color: rgba(184,212,204,0.5); letter-spacing: 0.08em;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 32px; height: 24px; position: relative; z-index: 201;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 2px; background: var(--deep);
+      position: absolute; left: 0; transition: all 0.35s cubic-bezier(.4,0,.2,1);
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
+    .hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed; inset: 0; background: rgba(247,244,238,0.98);
+      backdrop-filter: blur(20px); z-index: 200;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: all; }
+    .mobile-overlay a {
+      font-family: var(--serif); font-size: 2rem; font-weight: 300;
+      color: var(--deep); text-decoration: none;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s;
+    }
+    .mobile-overlay.open a {
+      opacity: 1; transform: translateY(0);
+    }
+    .mobile-overlay.open a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-overlay.open a:nth-child(2) { transition-delay: 0.15s; }
+    .mobile-overlay.open a:nth-child(3) { transition-delay: 0.2s; }
+    .mobile-overlay.open a:nth-child(4) { transition-delay: 0.25s; }
+    .mobile-overlay.open a:nth-child(5) { transition-delay: 0.3s; }
+    .mobile-overlay a:hover { color: var(--leaf); }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 90;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--mid); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.4s, transform 0.4s, background 0.3s;
+      box-shadow: 0 4px 20px rgba(30,61,53,0.2);
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--deep); }
+    .back-to-top svg { width: 20px; height: 20px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      nav.scrolled { padding: 0.8rem 2rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: block; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 8rem 2rem 4rem; }
+      .hero-right { height: 50vw; }
+      .about, .pillars, .products, .process, .testimonials, .cta-banner, .newsletter, footer { padding: 4rem 2rem; }
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+      .pillars-grid, .products-grid, .testi-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-grid::before { display: none; }
+      .cta-banner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 500px) {
+      .hero-left { padding: 7rem 1.4rem 3rem; }
+      .about, .pillars, .products, .process, .testimonials, .cta-banner, .newsletter, footer { padding: 3rem 1.4rem; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .about-stats { flex-direction: column; gap: 1.5rem; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <svg class="loader-logo" viewBox="0 0 28 28" fill="none">
+      <line x1="14" y1="3" x2="14" y2="25" stroke="#7AAF9E" stroke-width="1"/>
+      <path d="M14,7 C10,5 5,6 6,10 C7,13 12,12 14,7 Z" fill="#7AAF9E" opacity="0.8"/>
+      <path d="M14,13 C10,11 4,12 5,17 C6,20 12,18 14,13 Z" fill="#7AAF9E" opacity="0.65"/>
+      <path d="M14,7 C18,5 23,6 22,10 C21,13 16,12 14,7 Z" fill="#7AAF9E" opacity="0.8"/>
+      <path d="M14,13 C18,11 24,12 23,17 C22,20 16,18 14,13 Z" fill="#7AAF9E" opacity="0.65"/>
+    </svg>
+    <div class="loader-text">SZ Herbals</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="14" y1="3" x2="14" y2="25" stroke="#3D7A68" stroke-width="1"/>
+        <path d="M14,7 C10,5 5,6 6,10 C7,13 12,12 14,7 Z" fill="#3D7A68" opacity="0.8"/>
+        <path d="M14,13 C10,11 4,12 5,17 C6,20 12,18 14,13 Z" fill="#3D7A68" opacity="0.65"/>
+        <path d="M14,19 C10,17 5,18 6,22 C7,25 12,23 14,19 Z" fill="#3D7A68" opacity="0.5"/>
+        <path d="M14,7 C18,5 23,6 22,10 C21,13 16,12 14,7 Z" fill="#3D7A68" opacity="0.8"/>
+        <path d="M14,13 C18,11 24,12 23,17 C22,20 16,18 14,13 Z" fill="#3D7A68" opacity="0.65"/>
+        <path d="M14,19 C18,17 23,18 22,22 C21,25 16,23 14,19 Z" fill="#3D7A68" opacity="0.5"/>
+      </svg>
+      SZ Herbals
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#process">Our Process</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="Orderform.html" class="nav-cta">Shop Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#products" class="mobile-nav-link">Products</a>
+    <a href="#process" class="mobile-nav-link">Our Process</a>
+    <a href="#reviews" class="mobile-nav-link">Reviews</a>
+    <a href="Orderform.html" class="mobile-nav-link">Shop Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-left">
+      <div class="hero-tag reveal">Pure · Organic · Effective</div>
+      <h1 class="hero-title reveal reveal-delay-1">
+        Nature's <em>purest</em><br/>
+        healing in<br/>
+        every drop
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        100% organic herbal products handcrafted from the finest botanicals.
+        No chemicals. No fillers. Just nature — exactly as it was meant to be.
+      </p>
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="#products" class="btn-primary">Explore Products</a>
+        <a href="#about" class="btn-ghost">
+          Our Story
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2D5C52" stroke-width="1.5" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-botanical">
+        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- main stem -->
+          <line x1="150" y1="380" x2="150" y2="30" stroke="#3D7A68" stroke-width="2" stroke-linecap="round"/>
+          <!-- large leaves -->
+          <path d="M150,320 C110,295 60,300 65,330 C70,355 130,345 150,320 Z" fill="#3D7A68" opacity="0.35"/>
+          <path d="M150,280 C190,255 240,260 235,290 C230,315 170,305 150,280 Z" fill="#4A8A78" opacity="0.4"/>
+          <path d="M150,240 C108,215 55,220 60,252 C65,278 128,268 150,240 Z" fill="#3D7A68" opacity="0.45"/>
+          <path d="M150,200 C192,175 245,180 240,212 C235,238 172,228 150,200 Z" fill="#4A8A78" opacity="0.5"/>
+          <path d="M150,160 C108,135 52,140 57,172 C62,198 126,188 150,160 Z" fill="#3D7A68" opacity="0.55"/>
+          <path d="M150,120 C192,95 246,100 241,132 C236,158 172,148 150,120 Z" fill="#4A8A78" opacity="0.6"/>
+          <path d="M150,80 C118,58 72,62 76,88 C80,108 134,100 150,80 Z" fill="#3D7A68" opacity="0.65"/>
+          <path d="M150,80 C182,58 228,62 224,88 C220,108 166,100 150,80 Z" fill="#4A8A78" opacity="0.65"/>
+          <!-- vein lines -->
+          <path d="M150,320 C130,310 95,312 98,325" fill="none" stroke="#5A9A88" stroke-width="0.6" opacity="0.5"/>
+          <path d="M150,240 C130,230 90,232 93,248" fill="none" stroke="#5A9A88" stroke-width="0.6" opacity="0.5"/>
+          <path d="M150,160 C130,150 88,152 91,168" fill="none" stroke="#5A9A88" stroke-width="0.6" opacity="0.5"/>
+          <!-- flower top -->
+          <circle cx="150" cy="30" r="10" fill="#7AAF9E" opacity="0.6"/>
+          <circle cx="150" cy="30" r="5" fill="#3D7A68" opacity="0.8"/>
+          <circle cx="137" cy="20" r="6" fill="#7AAF9E" opacity="0.45"/>
+          <circle cx="163" cy="20" r="6" fill="#7AAF9E" opacity="0.45"/>
+          <circle cx="150" cy="14" r="6" fill="#7AAF9E" opacity="0.45"/>
+        </svg>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">100% Organic <span class="marquee-dot"></span></span>
+      <span class="marquee-item">No Chemicals <span class="marquee-dot"></span></span>
+      <span class="marquee-item">All Natural <span class="marquee-dot"></span></span>
+      <span class="marquee-item">100% Effective <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Ethically Sourced <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Handcrafted <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pure Botanicals <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Zero Fillers <span class="marquee-dot"></span></span>
+      <span class="marquee-item">100% Organic <span class="marquee-dot"></span></span>
+      <span class="marquee-item">No Chemicals <span class="marquee-dot"></span></span>
+      <span class="marquee-item">All Natural <span class="marquee-dot"></span></span>
+      <span class="marquee-item">100% Effective <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Ethically Sourced <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Handcrafted <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pure Botanicals <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Zero Fillers <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div>
+      <div class="section-label reveal">Our philosophy</div>
+      <h2 class="about-heading reveal reveal-delay-1">
+        Rooted in <em>nature,</em><br/>
+        backed by<br/>
+        generations
+      </h2>
+    </div>
+    <div class="about-right">
+      <p class="reveal">
+        At SZ Herbals, we believe true wellness begins where nature does. Every product we craft is born from an unwavering commitment to purity — sourced from organic farms, processed without chemicals, and delivered to you exactly as the earth intended.
+      </p>
+      <p class="reveal reveal-delay-1">
+        We don't believe in shortcuts. No synthetic additives, no chemical preservatives, no artificial anything. Just pure, potent botanicals that your body recognises and responds to.
+      </p>
+      <div class="about-stats">
+        <div class="reveal">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Organic Ingredients</div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Chemicals Used</div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Herbal Formulas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="pillars-head">
+      <div class="section-label reveal" style="color:var(--sage)">Why choose us</div>
+      <h2 class="reveal reveal-delay-1">What makes us <em>different</em></h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="#7AAF9E" stroke-width="1.2" stroke-linecap="round">
+          <path d="M24 6 C14 10 8 18 8 28 C8 38 15 44 24 44 C33 44 40 38 40 28 C40 18 34 10 24 6 Z"/>
+          <line x1="24" y1="6" x2="24" y2="44"/>
+          <path d="M24 18 C20 14 12 15 13 20 C14 24 22 22 24 18 Z"/>
+          <path d="M24 18 C28 14 36 15 35 20 C34 24 26 22 24 18 Z"/>
+        </svg>
+        <h3>Purely Organic</h3>
+        <p>Every ingredient is certified organic. Grown without pesticides, harvested at peak potency, and traceable to its source.</p>
+        <div class="pillar-num">01</div>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="#7AAF9E" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="24" cy="24" r="16"/>
+          <path d="M16 24 L21 29 L32 18"/>
+        </svg>
+        <h3>100% Effective</h3>
+        <p>Formulated for real results. Our high-concentration extracts are crafted to deliver the full benefit nature intended.</p>
+        <div class="pillar-num">02</div>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="#7AAF9E" stroke-width="1.2" stroke-linecap="round">
+          <path d="M24 8 L28 18 L40 18 L30 26 L34 38 L24 31 L14 38 L18 26 L8 18 L20 18 Z"/>
+        </svg>
+        <h3>Zero Chemicals</h3>
+        <p>No synthetic additives. No preservatives. No fillers. What you see on the label is exactly — and only — what's inside.</p>
+        <div class="pillar-num">03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="section-head">
+      <div>
+        <div class="section-label reveal">Our collection</div>
+        <h2 class="section-title reveal reveal-delay-1">Pure herbal <em>essentials</em></h2>
+      </div>
+      <a href="#" class="view-all reveal">View All →</a>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-img" style="background:#E4EFEB;">
+          <div class="product-tag-badge">Special</div>
+          <img src="Glukora-Image.png" alt="Glukora" style="width: 70%; height: auto; object-fit: contain; mix-blend-mode: multiply;"/>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Glukora</div>
+          <div class="product-desc">Picrorhiza Kurroa · Pancreatic Wellness</div>
+          <div class="product-footer">
+            <div class="product-price">$299 USD</div>
+            <a href="Glukora.html" class="product-add" style="text-decoration: none;">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-4">
+        <div class="product-img" style="background:#FBF0CC;">
+          <div class="product-tag-badge">New</div>
+          <img src="Livora Gold.png" alt="Livokara Gold" style="width: 70%; height: auto; object-fit: contain; mix-blend-mode: multiply;"/>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Livokara Gold</div>
+          <div class="product-desc">Turmeric · Mulethi · Saunf</div>
+          <div class="product-footer">
+            <div class="product-price">$449 USD</div>
+            <a href="livora gold.html" class="product-add" style="text-decoration: none;">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="section-head">
+      <div>
+        <div class="section-label reveal">Farm to you</div>
+        <h2 class="section-title reveal reveal-delay-1">Our <em>pure</em> process</h2>
+      </div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3D7A68" stroke-width="1.2" stroke-linecap="round">
+            <path d="M12 2C8 4 4 8 4 14 C4 18 7 22 12 22"/>
+            <path d="M12 2C16 4 20 8 20 14"/>
+            <line x1="12" y1="2" x2="12" y2="22"/>
+          </svg>
+        </div>
+        <h4>Organic Farming</h4>
+        <p>Herbs grown in certified organic soil, free from pesticides and synthetic fertilisers.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3D7A68" stroke-width="1.2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M12 8 L12 12 L15 15"/>
+          </svg>
+        </div>
+        <h4>Peak Harvest</h4>
+        <p>Hand-picked at the precise moment of maximum potency for full therapeutic benefit.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3D7A68" stroke-width="1.2" stroke-linecap="round">
+            <path d="M6 20 L6 10 Q6 4 12 4 Q18 4 18 10 L18 20"/>
+            <line x1="4" y1="20" x2="20" y2="20"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+          </svg>
+        </div>
+        <h4>Clean Extraction</h4>
+        <p>Cold-processed without heat or chemicals to preserve every active compound.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3D7A68" stroke-width="1.2" stroke-linecap="round">
+            <path d="M20 7L12 3L4 7V17L12 21L20 17V7Z"/>
+            <path d="M12 3V21"/>
+            <path d="M4 7L12 11L20 7"/>
+          </svg>
+        </div>
+        <h4>Delivered Pure</h4>
+        <p>Sealed and shipped in eco-friendly packaging — fresh to your door, pure as nature.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="section-head">
+      <div>
+        <div class="section-label reveal">Real results</div>
+        <h2 class="section-title reveal reveal-delay-1">What our <em>customers</em> say</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I've tried so many herbal brands and nothing came close. SZ Herbals actually works — I felt the difference within two weeks.</p>
+        <div class="testi-author">Aisha R. — Mumbai</div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Knowing there are absolutely no chemicals gives me such peace of mind. I trust this brand completely with my family's health.</p>
+        <div class="testi-author">Farhan M. — Karachi</div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The packaging is beautiful, the products smell incredible, and most importantly — they work. 100% effective isn't just a tagline here.</p>
+        <div class="testi-author">Sara K. — Lahore</div>
+      </div>
+    </div>
+    
+    <div class="review-form-wrap reveal" style="max-width:600px; margin:4rem auto 0; padding:2.5rem; background:var(--fog); border:.5px solid var(--mist);">
+      <div class="section-label" style="text-align:center;margin-bottom:0.8rem;">Share your experience</div>
+      <h3 style="font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--deep);text-align:center;margin-bottom:2rem;">Write a Review</h3>
+      <form id="index-review-form" style="display:grid;gap:1.4rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;">
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem;">Name *</label>
+            <input type="text" id="rev-name" required placeholder="Your name" style="width:100%;font-family:var(--sans);font-size:.78rem;padding:1rem;border:.5px solid var(--mist);background:#fff;outline:none;color:var(--deep);transition:border-color .3s;">
+          </div>
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem;">Email *</label>
+            <input type="email" id="rev-email" required placeholder="your@email.com" style="width:100%;font-family:var(--sans);font-size:.78rem;padding:1rem;border:.5px solid var(--mist);background:#fff;outline:none;color:var(--deep);transition:border-color .3s;">
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem;">Rating *</label>
+          <select id="rev-rating" required style="width:100%;font-family:var(--sans);font-size:.78rem;padding:1rem;border:.5px solid var(--mist);background:#fff url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22%3E%3Cpath d=%22M1 1L6 6L11 1%22 stroke=%22%237AAF9E%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3C/svg%3E') no-repeat right 1rem center;outline:none;color:var(--deep);appearance:none;border-radius:0;">
+            <option value="5">★★★★★ (5/5)</option>
+            <option value="4">★★★★☆ (4/5)</option>
+            <option value="3">★★★☆☆ (3/5)</option>
+            <option value="2">★★☆☆☆ (2/5)</option>
+            <option value="1">★☆☆☆☆ (1/5)</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem;">Review *</label>
+          <textarea id="rev-text" required rows="4" placeholder="Share your thoughts..." style="width:100%;font-family:var(--sans);font-size:.78rem;line-height:1.8;padding:1rem;border:.5px solid var(--mist);background:#fff;outline:none;color:var(--deep);resize:vertical;transition:border-color .3s;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="justify-self:center;margin-top:1rem;width:100%;text-align:center;">Submit Review</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div>
+      <h2 class="reveal">Begin your <em>natural</em><br/>wellness journey</h2>
+      <p class="reveal reveal-delay-1">Pure, potent, and completely chemical-free. Discover the SZ Herbals collection and feel the difference nature makes.</p>
+    </div>
+    <a href="Orderform.html" class="btn-light reveal reveal-delay-2">Shop the Collection</a>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <div class="section-label reveal" style="margin-bottom:0.8rem">Stay connected</div>
+      <h2 class="reveal reveal-delay-1">Join the <em>herbal</em> circle</h2>
+      <p class="reveal reveal-delay-2">Get exclusive wellness tips, early access to new products, and 10% off your first order when you subscribe.</p>
+      <form class="newsletter-form reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').value='';">
+        <input type="email" placeholder="Your email address" required/>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-trust reveal reveal-delay-3">No spam. Unsubscribe anytime. We respect your inbox.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="color:var(--cream)">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="14" y1="3" x2="14" y2="25" stroke="#7AAF9E" stroke-width="1"/>
+            <path d="M14,7 C10,5 5,6 6,10 C7,13 12,12 14,7 Z" fill="#7AAF9E" opacity="0.8"/>
+            <path d="M14,13 C10,11 4,12 5,17 C6,20 12,18 14,13 Z" fill="#7AAF9E" opacity="0.65"/>
+            <path d="M14,19 C10,17 5,18 6,22 C7,25 12,23 14,19 Z" fill="#7AAF9E" opacity="0.5"/>
+            <path d="M14,7 C18,5 23,6 22,10 C21,13 16,12 14,7 Z" fill="#7AAF9E" opacity="0.8"/>
+            <path d="M14,13 C18,11 24,12 23,17 C22,20 16,18 14,13 Z" fill="#7AAF9E" opacity="0.65"/>
+            <path d="M14,19 C18,17 23,18 22,22 C21,25 16,23 14,19 Z" fill="#7AAF9E" opacity="0.5"/>
+          </svg>
+          SZ Herbals
+        </div>
+        <p>Pure herbal wellness rooted in nature. No chemicals, no compromise — just the earth's finest botanicals, delivered to you.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="#">Wellness Tonics</a></li>
+          <li><a href="#">Herbal Creams</a></li>
+          <li><a href="#">Detox Powders</a></li>
+          <li><a href="#">Essential Oils</a></li>
+          <li><a href="#">Herbal Teas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Our Process</a></li>
+          <li><a href="#">Ingredients</a></li>
+          <li><a href="#">Certifications</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SZ Herbals. All rights reserved.</p>
+      <p>Pure · Natural · Effective</p>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#F7F4EE" stroke-width="2" stroke-linecap="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Nav scroll + back to top
+    const nav = document.getElementById('nav');
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('mobileOverlay');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-num');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const text = entry.target.textContent.trim();
+          const suffix = text.replace(/[0-9]/g, '');
+          const target = parseInt(text);
+          if (isNaN(target)) return;
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 40));
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            entry.target.textContent = current + suffix;
+          }, 30);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Page loader + hero reveals on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('pageLoader').classList.add('done');
+      }, 1200);
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 1400 + i * 150);
+      });
+    });
+
+    // Parallax on hero botanical
+    const botanical = document.querySelector('.hero-botanical svg');
+    if (botanical) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          botanical.style.transform = `translateY(${y * 0.15}px) rotate(${y * 0.01}deg)`;
+        }
+      }, { passive: true });
+    }
+
+    // Floating leaf particles
+    (function createParticles() {
+      const container = document.getElementById('heroParticles');
+      if (!container) return;
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('div');
+        p.classList.add('leaf-particle');
+        const size = 6 + Math.random() * 10;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.bottom = '-20px';
+        p.style.animationDuration = (8 + Math.random() * 12) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        p.innerHTML = '<svg viewBox="0 0 20 20" fill="#3D7A68" opacity="0.35"><path d="M10,2 C6,4 2,8 3,13 C4,16 8,15 10,10 C12,15 16,16 17,13 C18,8 14,4 10,2 Z"/></svg>';
+        container.appendChild(p);
+      }
+    })();
+
+    // Review form handler
+    const indexRevForm = document.getElementById('index-review-form');
+    if(indexRevForm){
+      indexRevForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('rev-name').value;
+        const email = document.getElementById('rev-email').value;
+        const rating = document.getElementById('rev-rating').value;
+        const text = document.getElementById('rev-text').value;
+
+        // Send data to Formspree silently
+        fetch('https://formspree.io/f/xzdozrbp', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            form: 'SZ Herbals Index Review',
+            name: name,
+            email: email,
+            rating: rating + ' Stars',
+            review: text
+          })
+        }).catch(err => console.error(err));
+
+        const stars = '★'.repeat(parseInt(rating)) + '☆'.repeat(5 - parseInt(rating));
+
+        const newRev = document.createElement('div');
+        newRev.className = 'testi-card reveal visible';
+        newRev.innerHTML = `
+          <div class="testi-stars">${stars}</div>
+          <div class="testi-quote">"</div>
+          <p class="testi-text">${text}</p>
+          <div class="testi-author">${name}</div>
+        `;
+
+        const grid = document.querySelector('.testi-grid');
+        grid.insertBefore(newRev, grid.firstChild);
+
+        indexRevForm.reset();
+        alert('Thank you! Your review has been submitted.');
+      });
+    }
+  </script>
+</body>
+</html>
