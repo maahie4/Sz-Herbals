@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Night in the Labor Room — A Real Story | Glukora by SZ Herbals</title>
+<meta name="description" content="Her blood sugar was 380. She was in labor. Doctors couldn't perform the C-section. This is the real story of what happened next. Glukora by SZ Herbals."/>
+<meta property="og:title" content="The Night in the Labor Room — A Real Glukora Story"/>
+<meta property="og:description" content="Blood sugar 380. In labor. C-section impossible. This is what happened in 3 days."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --deep:#0A0A0A;
+  --dark:#1A1A1A;
+  --mid:#2D2D2D;
+  --soft:#5A5A5A;
+  --muted:#888;
+  --border:#E0E0E0;
+  --cream:#FAFAF8;
+  --white:#FFFFFF;
+  --green:#1E3D35;
+  --greenm:#2D5C52;
+  --sage:#7AAF9E;
+  --sagel:#B8D4CC;
+  --fog:#E4EFEB;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Lato',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--deep);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none;}
+.cur{width:8px;height:8px;background:var(--deep);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;}
+.cur-r{width:30px;height:30px;border:1px solid var(--soft);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.4;}
+
+/* PROGRESS BAR */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--greenm);z-index:200;transition:width .1s linear;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5rem;background:transparent;transition:all .4s;}
+nav.scrolled{background:rgba(250,250,248,.97);backdrop-filter:blur(12px);padding:1rem 5rem;border-bottom:.5px solid var(--border);}
+.nav-brand{font-family:var(--serif);font-size:1.1rem;color:var(--deep);text-decoration:none;letter-spacing:.04em;}
+.nav-brand em{font-style:italic;color:var(--greenm);}
+.nav-back{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s;}
+.nav-back:hover{color:var(--deep);}
+.nav-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:var(--green);color:var(--fog);padding:.65rem 1.4rem;border:none;cursor:none;text-decoration:none;transition:background .3s;}
+.nav-cta:hover{background:var(--greenm);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 8rem 8rem;position:relative;overflow:hidden;background:var(--green);}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,#0A1F1A 0%,#1E3D35 60%,#2D5C52 100%);opacity:.95;}
+/* subtle grain */
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.3;}
+
+.hero-tag{font-family:var(--sans);font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sagel);margin-bottom:2.4rem;display:flex;align-items:center;gap:1rem;position:relative;z-index:2;}
+.hero-tag::before{content:'';width:32px;height:.5px;background:var(--sagel);}
+.hero-category{font-family:var(--sans);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.4rem;position:relative;z-index:2;}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,5.4rem);font-weight:400;line-height:1.06;color:var(--white);margin-bottom:2rem;position:relative;z-index:2;max-width:760px;}
+.hero-h1 em{font-style:italic;color:var(--sage);}
+.hero-meta{display:flex;align-items:center;gap:2rem;position:relative;z-index:2;}
+.meta-item{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sagel);opacity:.7;}
+.meta-sep{width:4px;height:4px;border-radius:50%;background:var(--sage);opacity:.4;}
+
+.hero-scroll-cue{position:absolute;bottom:3rem;right:5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sagel);opacity:.5;}
+.scroll-line{width:.5px;height:40px;background:var(--sagel);animation:sline 2.2s ease-in-out infinite;opacity:.4;}
+@keyframes sline{0%,100%{height:24px;}50%{height:48px;opacity:.8;}}
+
+/* ARTICLE */
+.article{max-width:720px;margin:0 auto;padding:7rem 2rem 5rem;}
+
+/* OPENING PULL QUOTE */
+.opening-quote{border-left:2px solid var(--greenm);padding:1.6rem 2.4rem;margin:0 0 4rem;background:var(--fog);}
+.opening-quote p{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--green);line-height:1.6;}
+.opening-quote cite{font-family:var(--sans);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);display:block;margin-top:.8rem;}
+
+/* BODY TEXT */
+.article p{font-size:1.05rem;line-height:1.9;color:var(--mid);margin-bottom:1.8rem;font-weight:300;}
+.article p strong{font-weight:700;color:var(--deep);}
+.article p em{font-style:italic;color:var(--greenm);}
+
+/* PULL STAT */
+.pull-stat{text-align:center;padding:4rem 2rem;margin:3rem -2rem;background:var(--green);}
+.pull-stat .num{font-family:var(--serif);font-size:clamp(4rem,8vw,7rem);font-style:italic;color:var(--sage);line-height:1;}
+.pull-stat .label{font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sagel);margin-top:.6rem;opacity:.8;}
+.pull-stat .sub{font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--fog);margin-top:1rem;opacity:.7;}
+
+/* SCENE BREAK */
+.scene-break{display:flex;align-items:center;gap:1.2rem;margin:3.5rem 0;opacity:.4;}
+.scene-break::before,.scene-break::after{content:'';flex:1;height:.5px;background:var(--border);}
+.scene-break span{font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);}
+
+/* TENSION BOX */
+.tension-box{background:var(--deep);color:var(--white);padding:3rem;margin:3rem 0;}
+.tension-box h3{font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--fog);margin-bottom:1.2rem;}
+.tension-box p{font-size:.85rem;line-height:1.9;color:var(--sagel);font-weight:300;margin-bottom:0;}
+
+/* TIMELINE */
+.timeline{margin:3rem 0;padding:0;}
+.tl-item{display:flex;gap:1.6rem;padding:1.4rem 0;border-bottom:.5px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-time{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--sage);flex-shrink:0;width:80px;padding-top:.2rem;}
+.tl-body h4{font-family:var(--sans);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;}
+.tl-body p{font-family:var(--sans);font-size:.88rem;line-height:1.8;color:var(--soft);font-weight:300;margin:0;}
+
+/* PULL QUOTE MID */
+.mid-quote{margin:3.5rem 0;padding:2.4rem 0;border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);}
+.mid-quote p{font-family:var(--serif);font-size:1.8rem;font-style:italic;color:var(--deep);line-height:1.4;margin:0;}
+.mid-quote cite{font-family:var(--sans);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);display:block;margin-top:1rem;}
+
+/* DISCLAIMER INLINE */
+.inline-disclaimer{background:var(--fog);border:.5px solid var(--sagel);padding:1.4rem 1.8rem;margin:3rem 0;}
+.inline-disclaimer p{font-family:var(--sans);font-size:.72rem;line-height:1.8;color:var(--greenm);margin:0;font-weight:300;}
+.inline-disclaimer strong{font-weight:700;color:var(--green);}
+
+/* CTA BLOCK */
+.cta-block{background:var(--greenm);padding:4rem;margin:4rem 0;text-align:center;}
+.cta-block h3{font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--fog);margin-bottom:1rem;}
+.cta-block p{font-family:var(--sans);font-size:.78rem;line-height:1.9;color:var(--sagel);font-weight:300;max-width:480px;margin:0 auto 2rem;}
+.btn-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:var(--fog);color:var(--green);padding:1rem 2.4rem;border:none;cursor:none;text-decoration:none;display:inline-block;transition:background .3s;}
+.btn-cta:hover{background:var(--white);}
+
+/* SHARE */
+.share-section{padding:3rem 0;border-top:.5px solid var(--border);margin-top:2rem;}
+.share-label{font-family:var(--sans);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+.share-buttons{display:flex;gap:.8rem;flex-wrap:wrap;}
+.share-btn{font-family:var(--sans);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;border:.5px solid var(--border);color:var(--soft);text-decoration:none;transition:all .3s;background:none;cursor:none;}
+.share-btn:hover{border-color:var(--greenm);color:var(--greenm);}
+
+/* RELATED */
+.related{padding:5rem 8rem;background:var(--fog);border-top:.5px solid var(--border);}
+.related h3{font-family:var(--serif);font-size:1.6rem;color:var(--deep);margin-bottom:2.4rem;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.related-card{background:var(--white);padding:1.6rem;border:.5px solid var(--border);transition:border-color .3s,transform .3s;text-decoration:none;}
+.related-card:hover{border-color:var(--greenm);transform:translateY(-3px);}
+.rc-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:.6rem;}
+.rc-title{font-family:var(--serif);font-size:1rem;color:var(--deep);line-height:1.4;}
+
+/* FOOTER */
+footer{background:var(--deep);padding:3rem 5rem;display:flex;justify-content:space-between;align-items:center;}
+footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.06em;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.25s;}
+
+@media(max-width:900px){
+  nav,nav.scrolled{padding:1rem 1.5rem;}
+  .hero{padding:0 2rem 5rem;}
+  .article{padding:4rem 1.5rem;}
+  .pull-stat{margin:3rem -1.5rem;}
+  .related{padding:4rem 2rem;}
+  .related-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:1rem;padding:2rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="cur-r"></div>
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand"><em>Glukora</em> by SZ Herbals</a>
+  <a href="blog.html" class="nav-back">← Back to Blog</a>
+  <a href="orderform.html" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-category reveal">Real Story · SZ Herbals</div>
+  <div class="hero-tag reveal d1">A mother. A labor room. Three days.</div>
+  <h1 class="hero-h1 reveal d2">
+    Her blood sugar was 380.<br/>
+    She was in labor.<br/>
+    The doctors couldn't<br/>
+    <em>operate.</em>
+  </h1>
+  <div class="hero-meta reveal d3">
+    <span class="meta-item">True story</span>
+    <div class="meta-sep"></div>
+    <span class="meta-item">SZ Herbals</span>
+    <div class="meta-sep"></div>
+    <span class="meta-item">Glukora</span>
+    <div class="meta-sep"></div>
+    <span class="meta-item">Blood sugar · Pregnancy</span>
+  </div>
+  <div class="hero-scroll-cue">
+    <span>Read</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <div class="opening-quote reveal">
+    <p>"There was nothing more they could do. Her sugar wouldn't come down. The baby couldn't wait much longer. And then someone mentioned a name — Glukora."</p>
+    <cite>— As told to SZ Herbals</cite>
+  </div>
+
+  <p class="reveal">This is not a marketing story. We didn't go looking for this. This story came to us — in the form of a man who had driven from another city, who had no time left, and who was asking for the only thing he hadn't tried yet.</p>
+
+  <p class="reveal">We are sharing it because we believe stories like this deserve to be heard. Not as proof of a cure. Not as a medical claim. But as a honest account of what one family experienced — and what we witnessed.</p>
+
+  <div class="scene-break"><span>The night it happened</span></div>
+
+  <p class="reveal">She had been in labor for hours. The hospital team was ready. The surgical team was ready. Everything was prepared for an emergency C-section to deliver the baby safely.</p>
+
+  <p class="reveal">But there was one problem. <strong>Her blood sugar was 380 mg/dL.</strong></p>
+
+  <p class="reveal">For a surgical procedure — especially a C-section — blood sugar must be stable and within a safe range before the team can operate. At 380, the risks are severe: poor wound healing, infection, anaesthesia complications, and danger to both mother and child.</p>
+
+  <div class="tension-box reveal">
+    <h3>Why blood sugar matters in surgery</h3>
+    <p>High blood glucose impairs the body's ability to clot blood, fight infection, and heal tissue. In C-section surgery, uncontrolled blood sugar significantly raises the risk of surgical site infection, delayed healing, and complications with anaesthesia. Doctors follow strict protocols — they will not operate until glucose is within a safe range. This is not a choice. It is patient safety.</p>
+  </div>
+
+  <p class="reveal">The doctors worked. They administered insulin. They adjusted her medications. They monitored her closely. But the sugar was not coming down quickly enough — and the baby could not wait indefinitely.</p>
+
+  <p class="reveal">Hours passed. The family stood outside the ward. Her husband — a man who had already done everything he could think of — was running out of options. And running out of time.</p>
+
+  <div class="scene-break"><span>The phone call</span></div>
+
+  <p class="reveal">Someone in the family mentioned SZ Herbals. They had heard about Glukora — a herbal formulation made from Picrorhiza Kurroa, a Himalayan root known in Ayurvedic tradition for supporting blood sugar balance and pancreatic health.</p>
+
+  <p class="reveal">The husband didn't hesitate. He was in another city. He got in his car and drove.</p>
+
+  <div class="mid-quote reveal">
+    <p>"He came to us himself. Drove from another city. He didn't ask many questions. He just said — my wife is in labor. Her sugar won't come down. The doctors can't operate. I need this."</p>
+    <cite>— SZ Herbals team</cite>
+  </div>
+
+  <p class="reveal">He took the Glukora. He returned to the hospital. And his wife began taking it.</p>
+
+  <div class="scene-break"><span>Three days</span></div>
+
+  <p class="reveal">Over the next three days, something shifted. Her blood sugar — which had resisted the medical team's efforts — began to stabilise.</p>
+
+  <div class="pull-stat reveal">
+    <div class="num">380</div>
+    <div class="label">mg/dL blood sugar on admission</div>
+    <div class="sub">Stabilised within 3 days of Glukora</div>
+  </div>
+
+  <p class="reveal">We want to be honest here: she was still under full medical care. The hospital team, the medications, the monitoring — all of this continued. We are not saying Glukora alone did this. We are saying this is what happened, exactly as it was told to us.</p>
+
+  <p class="reveal">The blood sugar came to a level the surgeons were comfortable with. <strong>The C-section was performed.</strong> Mother and baby were safe.</p>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-time">Day 0</div>
+      <div class="tl-body">
+        <h4>Labor begins</h4>
+        <p>Blood sugar reads 380 mg/dL. Doctors cannot perform C-section. Medical interventions begin but sugar remains unstable.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Day 1</div>
+      <div class="tl-body">
+        <h4>Husband learns about Glukora</h4>
+        <p>Drives from another city to collect Glukora from SZ Herbals. Wife begins taking the herbal formulation alongside her existing medical care.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Days 2–3</div>
+      <div class="tl-body">
+        <h4>Blood sugar begins to stabilise</h4>
+        <p>Glucose levels move toward a safe surgical range. The medical team continues monitoring closely.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Day 3</div>
+      <div class="tl-body">
+        <h4>C-section performed safely</h4>
+        <p>Blood sugar reaches a stable level acceptable for surgery. The C-section is performed. Mother and baby are safe and well. Alhamdulillah.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-break"><span>What this means</span></div>
+
+  <p class="reveal">We have shared this story with full honesty. We do not know with certainty what role Glukora played versus the medical care she was already receiving. We are not a pharmaceutical company. We don't have a clinical trial for this specific situation.</p>
+
+  <p class="reveal">What we do know is this: Picrorhiza Kurroa — the sole active ingredient in Glukora — contains bioactive compounds (picrosides I and II and kutkin) that have been studied for their anti-inflammatory effects on pancreatic tissue and their ability to support insulin regulation. These are not invented claims. They are documented in Ayurvedic pharmacology and ethnopharmacological research going back decades.</p>
+
+  <p class="reveal">And we know what that husband told us when he came back. He didn't come back with questions or complaints. <strong>He came back with gratitude.</strong></p>
+
+  <div class="mid-quote reveal">
+    <p>"Some things you cannot explain. You just know what happened. And you are grateful."</p>
+    <cite>— The husband, as told to SZ Herbals</cite>
+  </div>
+
+  <p class="reveal">We believe in Allah's will above all else. We believe He is the healer — not us, not our product. We are only a means. A small vessel. And if through that vessel, one mother held her child safely — then that is everything.</p>
+
+  <p class="reveal" style="font-style:italic;color:var(--greenm);font-family:'Playfair Display',serif;font-size:1.1rem;">Alhamdulillah. 🤲</p>
+
+  <div class="inline-disclaimer reveal">
+    <p><strong>Important note:</strong> This is a real account shared with us directly. We are sharing it faithfully and honestly. Glukora is a herbal dietary supplement — it is not a medical treatment and is not intended to replace hospital care, emergency treatment, or prescribed medication. This story is shared to honour the experience of one family, not as a clinical claim. If you or someone you love is in a medical emergency, please seek immediate professional medical care.</p>
+  </div>
+
+  <div class="cta-block reveal">
+    <h3>Has Glukora helped you or someone you love?</h3>
+    <p>We read every message personally. Share your story with us — it may give hope to someone else who needs it. And if you're ready to begin your own course, we review every order personally.</p>
+    <a href="orderform.html" class="btn-cta">Request Your Glukora Order</a>
+  </div>
+
+  <div class="share-section reveal">
+    <div class="share-label">Share this story</div>
+    <div class="share-buttons">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=glukora-story.html" class="share-btn" target="_blank">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?text=Her blood sugar was 380. She was in labor. The doctors couldn't operate. This is what happened next.&url=glukora-story.html" class="share-btn" target="_blank">Twitter / X</a>
+      <a href="https://wa.me/?text=Read this real story about Glukora by SZ Herbals: glukora-story.html" class="share-btn" target="_blank">WhatsApp</a>
+      <a href="https://pinterest.com/pin/create/button/?url=glukora-story.html&description=Her blood sugar was 380. In labor. Doctors couldn't operate. What happened next." class="share-btn" target="_blank">Pinterest</a>
+    </div>
+  </div>
+
+</article>
+
+<!-- RELATED -->
+<section class="related">
+  <h3>Continue reading</h3>
+  <div class="related-grid">
+    <a href="glukora.html" class="related-card">
+      <div class="rc-tag">Product</div>
+      <div class="rc-title">Glukora — Pure Herbal Pancreatic Wellness</div>
+    </a>
+    <a href="why-glukora.html" class="related-card">
+      <div class="rc-tag">Research</div>
+      <div class="rc-title">The real cost of diabetes in America — a comparison</div>
+    </a>
+    <a href="orderform.html" class="related-card">
+      <div class="rc-tag">Order</div>
+      <div class="rc-title">Request your Glukora course — we review every order personally</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Glukora by SZ Herbals. All rights reserved.</p>
+  <p>Pure · Natural · Rooted in Nature · Alhamdulillah</p>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},55);
+});
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';curR.style.width='44px';curR.style.height='44px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';curR.style.width='30px';curR.style.height='30px';});
+});
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+  const prog=document.getElementById('progress');
+  prog.style.width=(scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.hero .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),200+i*160));
+});
+</script>
+</body>
+</html>

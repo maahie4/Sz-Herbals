@@ -378,6 +378,71 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
   .hero-actions{flex-direction:column;align-items:flex-start;}
   .footer-grid{grid-template-columns:1fr;gap:2rem;}
 }
+  /* GUARANTEE */
+  .guarantee {
+    padding: 7rem 8rem;
+    background: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .guarantee::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(61,122,104,0.05) 0%, transparent 70%);
+  }
+  .guarantee-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .guarantee-seal {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fog);
+    border-radius: 50%;
+    border: 0.5px solid var(--mist);
+    box-shadow: 0 10px 30px rgba(30,61,53,0.05);
+  }
+  .guarantee-seal svg { width: 44px; height: 44px; }
+  .guarantee-h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400;
+    font-family: var(--display);
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+  .guarantee-h2 em { font-style: italic; color: var(--leaf); }
+  .guarantee-p {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    line-height: 2;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 0;
+  }
+  .guarantee-trust {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .guarantee-trust::before, .guarantee-trust::after {
+    content: '';
+    width: 30px; height: 0.5px;
+    background: var(--mist);
+  }
 </style>
 </head>
 <body>
@@ -395,11 +460,11 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
     Glukora
   </a>
   <ul class="nav-links">
-    <li><a href="#diabetes">What is Diabetes</a></li>
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#ingredient">Ingredient</a></li>
-    <li><a href="#dosage">Dosage</a></li>
-    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="index.html#diabetes">What is Diabetes</a></li>
+    <li><a href="index.html#how-it-works">How It Works</a></li>
+    <li><a href="index.html#ingredient">Ingredient</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
   </ul>
   <a href="orderform.html" class="nav-cta">Order Now</a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -409,11 +474,11 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 
 <!-- MOBILE OVERLAY -->
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="#diabetes" class="mobile-nav-link">What is Diabetes</a>
-  <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
-  <a href="#ingredient" class="mobile-nav-link">Ingredient</a>
-  <a href="#dosage" class="mobile-nav-link">Dosage</a>
-  <a href="#reviews" class="mobile-nav-link">Reviews</a>
+  <a href="index.html#diabetes" class="mobile-nav-link">What is Diabetes</a>
+  <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+  <a href="index.html#ingredient" class="mobile-nav-link">Ingredient</a>
+  <a href="blog.html" class="mobile-nav-link">Blog</a>
+  <a href="index.html#reviews" class="mobile-nav-link">Reviews</a>
   <a href="orderform.html" class="mobile-nav-link">Order Now</a>
 </div>
 
@@ -1083,7 +1148,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
     <div class="teaser-eyebrow">Financial Impact</div>
     <h2>The Real Cost of Diabetes</h2>
     <p>Every year, diabetes costs the average American $4,600 in out-of-pocket expenses. Most of this goes towards managing symptoms, not healing the cause. Glukora offers a different path.</p>
-    <a href="why glukora.html" class="btn-ghost">Read the full cost comparison →</a>
+    <a href="why-glukora.html" class="btn-ghost">Read the full cost comparison →</a>
   </div>
 </section>
 
@@ -1100,6 +1165,24 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 <div class="disclaimer">
   <p>* These statements have not been evaluated by the Food and Drug Administration. Glukora is not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Always consult a qualified healthcare provider before beginning any supplement regimen, especially if you are taking prescription medication for diabetes or any other condition.</p>
 </div>
+
+<!-- GUARANTEE -->
+<section class="guarantee reveal">
+  <div class="guarantee-inner">
+    <div class="guarantee-seal">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#3D7A68" stroke-width="1"/>
+        <path d="M12 22L19 29L32 16" stroke="#3D7A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M22 2V6M22 38V42M2 22H6M38 22H42" stroke="#3D7A68" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="guarantee-trust">100% Trust · 100% Guarantee</div>
+    <h2 class="guarantee-h2">Your wellness is our <em>highest</em> priority.</h2>
+    <p class="guarantee-p">
+      We have 100% trust in our products — they work by God's will. Your health is our priority, and we stand by the quality and efficacy of every bottle. That is why we offer a 100% Money Back Guarantee on all orders.
+    </p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -1118,33 +1201,19 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
       <p>Pure herbal pancreatic wellness by SZ Herbals. Rooted in nature, backed by tradition, confirmed by science.</p>
     </div>
     <div class="footer-col">
-      <h5>Product</h5>
+      <h5>Journal</h5>
       <ul>
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Ingredients</a></li>
-        <li><a href="#">Dosage Guide</a></li>
-        <li><a href="#">Order Now</a></li>
-        <li><a href="#">Wholesale</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Learn</h5>
-      <ul>
-        <li><a href="#">What is Diabetes</a></li>
-        <li><a href="#">The Pancreas</a></li>
-        <li><a href="#">Picrorhiza Kurroa</a></li>
-        <li><a href="#">Research</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="glukora-story-blog.html">Real Story</a></li>
+        <li><a href="why-glukora.html">Research</a></li>
+        <li><a href="blog.html">All Stories</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Support</h5>
       <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Track Order</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="orderform.html">Order Now</a></li>
+        <li><a href="livora-gold.html">Livora Gold</a></li>
       </ul>
     </div>
   </div>
