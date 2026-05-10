@@ -28,9 +28,7 @@
   --sans:'Lato',sans-serif;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--deep);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none;}
-.cur{width:8px;height:8px;background:var(--deep);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;}
-.cur-r{width:30px;height:30px;border:1px solid var(--soft);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.4;}
+body{background:var(--cream);color:var(--deep);font-family:var(--sans);font-weight:300;overflow-x:hidden;}
 
 /* PROGRESS BAR */
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--greenm);z-index:200;transition:width .1s linear;}
@@ -42,7 +40,7 @@ nav.scrolled{background:rgba(250,250,248,.97);backdrop-filter:blur(12px);padding
 .nav-brand em{font-style:italic;color:var(--greenm);}
 .nav-back{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s;}
 .nav-back:hover{color:var(--deep);}
-.nav-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:var(--green);color:var(--fog);padding:.65rem 1.4rem;border:none;cursor:none;text-decoration:none;transition:background .3s;}
+.nav-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:var(--green);color:var(--fog);padding:.65rem 1.4rem;border:none;text-decoration:none;transition:background .3s;}
 .nav-cta:hover{background:var(--greenm);}
 
 /* HERO */
@@ -115,14 +113,14 @@ nav.scrolled{background:rgba(250,250,248,.97);backdrop-filter:blur(12px);padding
 .cta-block{background:var(--greenm);padding:4rem;margin:4rem 0;text-align:center;}
 .cta-block h3{font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--fog);margin-bottom:1rem;}
 .cta-block p{font-family:var(--sans);font-size:.78rem;line-height:1.9;color:var(--sagel);font-weight:300;max-width:480px;margin:0 auto 2rem;}
-.btn-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:var(--fog);color:var(--green);padding:1rem 2.4rem;border:none;cursor:none;text-decoration:none;display:inline-block;transition:background .3s;}
+.btn-cta{font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:var(--fog);color:var(--green);padding:1rem 2.4rem;border:none;text-decoration:none;display:inline-block;transition:background .3s;}
 .btn-cta:hover{background:var(--white);}
 
 /* SHARE */
 .share-section{padding:3rem 0;border-top:.5px solid var(--border);margin-top:2rem;}
 .share-label{font-family:var(--sans);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
 .share-buttons{display:flex;gap:.8rem;flex-wrap:wrap;}
-.share-btn{font-family:var(--sans);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;border:.5px solid var(--border);color:var(--soft);text-decoration:none;transition:all .3s;background:none;cursor:none;}
+.share-btn{font-family:var(--sans);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;border:.5px solid var(--border);color:var(--soft);text-decoration:none;transition:all .3s;background:none;}
 .share-btn:hover{border-color:var(--greenm);color:var(--greenm);}
 
 /* RELATED */
@@ -156,8 +154,6 @@ footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);let
 </head>
 <body>
 
-<div class="cur" id="cur"></div>
-<div class="cur-r" id="cur-r"></div>
 <div class="progress" id="progress"></div>
 
 <!-- NAV -->
@@ -215,7 +211,7 @@ footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);let
 
   <div class="tension-box reveal">
     <h3>Why blood sugar matters in surgery</h3>
-    <p>High blood glucose impairs the body's ability to clot blood, fight infection, and heal tissue. In C-section surgery, uncontrolled blood sugar significantly raises the risk of surgical site infection, delayed healing, and complications with anaesthesia. Doctors follow strict protocols — they will not operate until glucose is within a safe range. This is not a choice. It is patient safety.</p>
+    <p>High blood glucose impairs the body's ability to clot blood, fight infection, and restore tissue. In C-section surgery, uncontrolled blood sugar significantly raises the risk of surgical site infection, delayed recovery, and complications with anaesthesia. Doctors follow strict protocols — they will not operate until glucose is within a safe range. This is not a choice. It is patient safety.</p>
   </div>
 
   <p class="reveal">The doctors worked. They administered insulin. They adjusted her medications. They monitored her closely. But the sugar was not coming down quickly enough — and the baby could not wait indefinitely.</p>
@@ -224,7 +220,7 @@ footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);let
 
   <div class="scene-break"><span>The phone call</span></div>
 
-  <p class="reveal">Someone in the family mentioned SZ Herbals. They had heard about Glukora — a herbal formulation made from Picrorhiza Kurroa, a Himalayan root known in Ayurvedic tradition for supporting blood sugar balance and pancreatic health.</p>
+  <p class="reveal">Someone in the family mentioned SZ Herbals. They had heard about Glukora — a herbal formulation made from Picrorhiza Kurroa, a Himalayan root known in Ayurvedic tradition for reversing blood sugar imbalances and supporting pancreatic health.</p>
 
   <p class="reveal">The husband didn't hesitate. He was in another city. He got in his car and drove.</p>
 
@@ -284,7 +280,7 @@ footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);let
 
   <p class="reveal">We have shared this story with full honesty. We do not know with certainty what role Glukora played versus the medical care she was already receiving. We are not a pharmaceutical company. We don't have a clinical trial for this specific situation.</p>
 
-  <p class="reveal">What we do know is this: Picrorhiza Kurroa — the sole active ingredient in Glukora — contains bioactive compounds (picrosides I and II and kutkin) that have been studied for their anti-inflammatory effects on pancreatic tissue and their ability to support insulin regulation. These are not invented claims. They are documented in Ayurvedic pharmacology and ethnopharmacological research going back decades.</p>
+  <p class="reveal">What we do know is this: Picrorhiza Kurroa — the sole active ingredient in Glukora — contains bioactive compounds (picrosides I and II and kutkin) that have been studied for their effects on reversing pancreatic inflammation and their ability to support insulin regulation. These are not invented claims. They are documented in Ayurvedic pharmacology and ethnopharmacological research going back decades.</p>
 
   <p class="reveal">And we know what that husband told us when he came back. He didn't come back with questions or complaints. <strong>He came back with gratitude.</strong></p>
 
@@ -340,20 +336,12 @@ footer p{font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.3);let
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Glukora by SZ Herbals. All rights reserved.</p>
+  <p>© 2025 Glukora by <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a>. All rights reserved.</p>
   <p>Pure · Natural · Rooted in Nature · Alhamdulillah</p>
 </footer>
 
 <script>
-const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},55);
-});
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';curR.style.width='44px';curR.style.height='44px';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';curR.style.width='30px';curR.style.height='30px';});
-});
+
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
   const prog=document.getElementById('progress');

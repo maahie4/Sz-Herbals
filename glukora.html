@@ -57,7 +57,7 @@
       "name": "What herbal supplements help with type 2 diabetes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Picrorhiza Kurroa (Kutki) is one of the most studied Ayurvedic herbs for blood sugar support. It contains picrosides I and II — bioactive compounds that reduce inflammation in pancreatic tissue and support beta cell regeneration. Glukora by SZ Herbals delivers pure Picrorhiza Kurroa extract in a 40-day therapeutic course."
+        "text": "Picrorhiza Kurroa is one of the most studied Ayurvedic herbs for blood sugar support. It contains picrosides I and II — bioactive compounds that reduce inflammation in pancreatic tissue and support beta cell regeneration. Glukora by SZ Herbals delivers pure Picrorhiza Kurroa extract in a 40-day therapeutic course."
       }
     },
     {
@@ -87,7 +87,9 @@
   ]
 }
 </script>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -134,6 +136,14 @@ nav.scrolled{background:rgba(247,244,238,.97);backdrop-filter:blur(12px);padding
 .btn-ghost:hover{color:var(--leaf);}
 .hero-badges{display:flex;gap:.8rem;margin-top:2.4rem;flex-wrap:wrap;}
 .badge{font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);border:.5px solid var(--mist);padding:.35rem .9rem;background:rgba(255,255,255,.5);}
+.reversal-score-card{max-width:470px;margin-top:2.2rem;padding:1.7rem;background:rgba(255,255,255,.68);border:.5px solid var(--mist);box-shadow:0 18px 40px rgba(15,43,36,.08);}
+.reversal-score-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.7rem;}
+.reversal-score-card h2{font-family:var(--display);font-size:clamp(1.7rem,2.3vw,2.45rem);line-height:1.08;font-weight:400;color:var(--deep);margin-bottom:.65rem;}
+.reversal-score-card p{font-family:var(--sans);font-size:.74rem;line-height:1.8;font-weight:300;color:var(--mid);}
+.condition-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.25rem 0 1.35rem;}
+.condition-chip{font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);background:var(--fog);border:.5px solid var(--mist);padding:.55rem .75rem;}
+.assessment-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.assessment-note{font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);}
 .hero-right{background:var(--fog);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(61,122,104,.1) 0%,transparent 70%);}
 
@@ -449,7 +459,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-brand">
+  <a href="index.html" class="nav-brand">
     <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="13" y1="2" x2="13" y2="24" stroke="#3D7A68" stroke-width="1"/>
       <path d="M13,6 C9,4 4,5 5,9 C6,12 11,11 13,6Z" fill="#3D7A68" opacity=".8"/>
@@ -487,10 +497,10 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
   <div class="hero-left">
     <div class="hero-eyebrow reveal">Pure Herbal · Pancreatic Wellness</div>
     <h1 class="hero-h1 reveal d1">
-      Heal your<br/>
-      <em>pancreas.</em><br/>
+      Reverse your<br/>
+      <em>diabetes.</em><br/>
       Restore your<br/>
-      insulin.
+      pancreas.
     </h1>
     <p class="hero-sub reveal d2">
       Glukora is a 100% organic herbal formulation rooted in Picrorhiza Kurroa — a powerful Himalayan root clinically known to regenerate pancreatic cells and restore natural insulin production.
@@ -505,12 +515,26 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
       <span class="badge">1000+ Users</span>
       <span class="badge">40-Day Course</span>
     </div>
+    <div class="reversal-score-card reveal d4" id="assessment">
+      <div class="reversal-score-kicker">Quick Health Check</div>
+      <h2>Know Your Reversal Score</h2>
+      <p>Quick assessment to understand your diabetes type, risk level &amp; reversal potential.</p>
+      <div class="condition-chips" aria-label="Assessment condition options">
+        <span class="condition-chip">Type 1</span>
+        <span class="condition-chip">Type 2</span>
+        <span class="condition-chip">Pre-Diabetes</span>
+        <span class="condition-chip">Any Other Condition</span>
+      </div>
+      <div class="assessment-row">
+        <a href="assessment.html" class="btn-primary">Start My Assessment</a>
+        <span class="assessment-note">Free · No obligation · 2 min</span>
+      </div>
+    </div>
   </div>
   <div class="hero-right">
     <div class="product-stage">
       <div class="product-img-wrap">
         <img src="glukora-image.png" alt="Glukora — Pure Herbal Pancreatic Wellness by SZ Herbals"/>
-
       </div>
     </div>
     <div class="hero-scroll">
@@ -524,7 +548,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 <div class="marquee">
   <div class="marquee-track">
     <span class="m-item">100% Organic <span class="m-dot"></span></span>
-    <span class="m-item">Heals the Pancreas <span class="m-dot"></span></span>
+    <span class="m-item">Reverse Your Diabetes <span class="m-dot"></span></span>
     <span class="m-item">Restores Insulin Production <span class="m-dot"></span></span>
     <span class="m-item">Zero Chemicals <span class="m-dot"></span></span>
     <span class="m-item">Picrorhiza Kurroa <span class="m-dot"></span></span>
@@ -532,7 +556,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
     <span class="m-item">40-Day Course <span class="m-dot"></span></span>
     <span class="m-item">100% Effective <span class="m-dot"></span></span>
     <span class="m-item">100% Organic <span class="m-dot"></span></span>
-    <span class="m-item">Heals the Pancreas <span class="m-dot"></span></span>
+    <span class="m-item">Reverse Your Diabetes <span class="m-dot"></span></span>
     <span class="m-item">Restores Insulin Production <span class="m-dot"></span></span>
     <span class="m-item">Zero Chemicals <span class="m-dot"></span></span>
     <span class="m-item">Picrorhiza Kurroa <span class="m-dot"></span></span>
@@ -647,7 +671,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 <!-- HOW GLUKORA WORKS -->
 <section class="mechanism" id="how-it-works">
   <div class="section-label reveal">The mechanism</div>
-  <h2 class="section-h2 reveal d1">How Glukora <em>heals</em><br/>your pancreas step by step</h2>
+  <h2 class="section-h2 reveal d1">How Glukora <em>reverses</em><br/>your diabetes step by step</h2>
   <p style="font-family:var(--sans);font-size:.8rem;line-height:2;font-weight:300;color:var(--mist);max-width:580px;margin-top:1rem;" class="reveal d2">Unlike medications that simply manage blood sugar, Glukora works at the root — targeting the pancreatic tissue itself to restore its natural ability to produce insulin.</p>
   <div class="mech-steps">
     <div class="mech-step reveal">
@@ -786,10 +810,10 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 <!-- INGREDIENT -->
 <section class="ingredient" id="ingredient">
   <div class="section-label reveal">The key ingredient</div>
-  <h2 class="section-h2 reveal d1">Picrorhiza Kurroa —<br/>the <em>Himalayan root</em> that heals</h2>
+  <h2 class="section-h2 reveal d1">Picrorhiza Kurroa —<br/>the <em>Himalayan root</em> for reversal</h2>
   <div class="ingredient-grid">
     <div class="ingredient-text">
-      <p class="reveal">Picrorhiza Kurroa (known locally as Kutki or Katuki) is a small perennial herb native to the alpine Himalayan region, growing between 3,000 and 5,000 metres altitude. It has been used in Ayurvedic and Unani medicine for thousands of years — but modern research has now confirmed what traditional healers always knew.</p>
+      <p class="reveal">Picrorhiza Kurroa is a small perennial herb native to the alpine Himalayan region, growing between 3,000 and 5,000 metres altitude. It has been used in Ayurvedic and Unani medicine for thousands of years — but modern research has now confirmed what traditional healers always knew.</p>
       <p class="reveal d1">The root contains a unique combination of iridoid glycosides — primarily picrosides I and II, and kutkin — that directly target liver and pancreatic tissue. These compounds reduce inflammation, protect cells from oxidative damage, and actively stimulate the regeneration of insulin-producing beta cells.</p>
       <div class="ingredient-props reveal d2">
         <div class="prop">
@@ -842,7 +866,6 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
             <path d="M140,145 C146,152 152,156 158,155" fill="none" stroke="#C4965A" stroke-width="1.4" stroke-linecap="round" opacity=".65"/>
             <!-- root label -->
             <text x="170" y="120" font-family="'Montserrat',sans-serif" font-size="7.5" fill="#C4965A" opacity=".9" letter-spacing="1">Root</text>
-            <text x="162" y="130" font-family="'Montserrat',sans-serif" font-size="7.5" fill="#C4965A" opacity=".9" letter-spacing="1">(Kutki)</text>
             <line x1="160" y1="124" x2="148" y2="120" stroke="#C4965A" stroke-width=".6" opacity=".5"/>
             <!-- altitude label -->
             <text x="42" y="18" font-family="'Montserrat',sans-serif" font-size="7" fill="#4A8A78" opacity=".7">3000–5000m altitude</text>
@@ -969,7 +992,26 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
   <div class="pricing-inner">
     <div class="pricing-head">
       <div class="section-label reveal">Simple, honest pricing</div>
-      <h2 class="section-h2 reveal d1" style="text-align:center;">Choose your <em>healing course</em></h2>
+      <h2 class="section-h2 reveal d1" style="text-align:center;">Choose your <em>reversal course</em></h2>
+    </div>
+
+    <div class="price-card reveal" style="grid-column: 1 / -1; background: var(--deep); border: 1px solid var(--sage); display: grid; grid-template-columns: 1.2fr 1fr; align-items: stretch; margin-bottom: 3rem; text-align: left;">
+      <div style="background: var(--cream); padding: 3rem; display: flex; align-items: center; justify-content: center; gap: 2rem;">
+         <img src="glukora-image.png" style="width: 35%; height: auto; object-fit: contain;"/>
+         <div style="font-size: 3rem; color: var(--sage); font-family: var(--display); opacity: 0.6;">+</div>
+         <img src="livora-gold.png" style="width: 35%; height: auto; object-fit: contain;"/>
+      </div>
+      <div style="padding: 3.5rem; display: flex; flex-direction: column; justify-content: center;">
+        <div class="pc-saves" style="background: var(--gold); color: white; border: none; margin-bottom: 1.5rem;">Aggressive Reversal Offer — Save $99</div>
+        <h3 class="pc-name" style="color: var(--cream); font-size: 2.2rem; margin-bottom: 0.8rem;">Diabetes Reversal Bundle</h3>
+        <p class="pc-per" style="color: var(--mist); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem;">The ultimate synergistic course. Glukora heals the pancreas while Livora Gold restores liver function — together addressing the two metabolic pillars of diabetes.</p>
+        <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
+          <div class="pc-price" style="color: var(--sage);">$399<span style="color: var(--mist);"> USD</span></div>
+          <div style="text-decoration: line-through; color: var(--mist); opacity: 0.4; font-family: var(--display); font-size: 1.5rem; font-style: italic;">$498</div>
+        </div>
+        <div class="pc-includes" style="color: var(--sage); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem;">Includes full courses of both</div>
+        <a href="orderform.html" class="btn-order" style="background: var(--sage); color: var(--deep); font-weight: 500; font-size: 0.8rem;">Get the Reversal Bundle →</a>
+      </div>
     </div>
 
     <div class="pricing-grid">
@@ -1089,7 +1131,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 
     <div style="border-bottom:.5px solid #B8D4CC;padding:1.8rem 0;">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#1E3D35;margin-bottom:.8rem;font-weight:500;">What herbal supplements support healthy blood sugar in Type 2 diabetes?</h3>
-      <p style="font-family:'Montserrat',sans-serif;font-size:.78rem;line-height:2;font-weight:300;color:#2D5C52;">Picrorhiza Kurroa (Kutki) is among the most studied Ayurvedic herbs for metabolic wellness. It contains picrosides I and II — bioactive iridoid glycosides that reduce NF-kB inflammatory signalling in pancreatic tissue and support beta cell regeneration. Glukora by SZ Herbals delivers pure Picrorhiza Kurroa extract in a 40-day therapeutic course. Observed across 1,000+ users locally over 5 years.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:.78rem;line-height:2;font-weight:300;color:#2D5C52;">Picrorhiza Kurroa is among the most studied Ayurvedic herbs for metabolic wellness. It contains picrosides I and II — bioactive iridoid glycosides that reduce NF-kB inflammatory signalling in pancreatic tissue and support beta cell regeneration. Glukora by SZ Herbals delivers pure Picrorhiza Kurroa extract in a 40-day therapeutic course. Observed across 1,000+ users locally over 5 years.</p>
     </div>
 
     <div style="border-bottom:.5px solid #B8D4CC;padding:1.8rem 0;">
@@ -1104,7 +1146,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
 
     <div style="padding:1.8rem 0;">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#1E3D35;margin-bottom:.8rem;font-weight:500;">What is Picrorhiza Kurroa and why is it in Glukora?</h3>
-      <p style="font-family:'Montserrat',sans-serif;font-size:.78rem;line-height:2;font-weight:300;color:#2D5C52;">Picrorhiza Kurroa (also known as Kutki or Katuki) is a perennial alpine herb native to the Himalayan highlands at 3,000–5,000 metres altitude. Used for 5,000+ years in Ayurvedic medicine, its active compounds — picrosides I and II and kutkin — directly target pancreatic and liver tissue. It is the sole active ingredient in Glukora by SZ Herbals, cold-extracted and delivered in pure organic form.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:.78rem;line-height:2;font-weight:300;color:#2D5C52;">Picrorhiza Kurroa is a perennial alpine herb native to the Himalayan highlands at 3,000–5,000 metres altitude. Used for 5,000+ years in Ayurvedic medicine, its active compounds — picrosides I and II and kutkin — directly target pancreatic and liver tissue. It is the sole active ingredient in Glukora by SZ Herbals, cold-extracted and delivered in pure organic form.</p>
     </div>
 
   </div>
@@ -1198,7 +1240,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
         </svg>
         Glukora
       </div>
-      <p>Pure herbal pancreatic wellness by SZ Herbals. Rooted in nature, backed by tradition, confirmed by science.</p>
+      <p>Pure herbal pancreatic wellness (Picrorhiza Kurroa) by <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a>. Rooted in nature, backed by tradition, confirmed by science.</p>
     </div>
     <div class="footer-col">
       <h5>Journal</h5>
@@ -1218,7 +1260,7 @@ footer{background:var(--deep);padding:5rem 8rem 2.5rem;}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 Glukora by SZ Herbals. All rights reserved.</p>
+    <p>© 2025 Glukora by <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a>. All rights reserved.</p>
     <p>Pure · Natural · Effective</p>
   </div>
 </footer>
@@ -1293,10 +1335,11 @@ if(revForm){
     `;
 
     const grid=document.querySelector('.testi-grid');
-    grid.insertBefore(newRev,grid.firstChild);
-
-    revForm.reset();
-    alert('Thank you! Your review has been submitted.');
+    if(grid){
+       grid.prepend(newRev);
+       revForm.reset();
+       alert('Thank you for your review!');
+    }
   });
 }
 </script>

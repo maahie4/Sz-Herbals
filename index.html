@@ -746,6 +746,7 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* HAMBURGER */
     .hamburger {
@@ -848,7 +849,7 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="14" y1="3" x2="14" y2="25" stroke="#3D7A68" stroke-width="1"/>
         <path d="M14,7 C10,5 5,6 6,10 C7,13 12,12 14,7 Z" fill="#3D7A68" opacity="0.8"/>
@@ -867,7 +868,7 @@
       <li><a href="#process">Our Process</a></li>
       <li><a href="#reviews">Reviews</a></li>
     </ul>
-    <a href="orderform.html" class="nav-cta">Shop Now</a>
+    <a href="orderform.html" class="nav-cta">Order Now</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -880,25 +881,24 @@
     <a href="blog.html" class="mobile-nav-link">Journal</a>
     <a href="#process" class="mobile-nav-link">Our Process</a>
     <a href="#reviews" class="mobile-nav-link">Reviews</a>
-    <a href="orderform.html" class="mobile-nav-link">Shop Now</a>
+    <a href="#reviews" class="mobile-nav-link">Reviews</a>
   </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-particles" id="heroParticles"></div>
     <div class="hero-left">
-      <div class="hero-tag reveal">Pure · Organic · Effective</div>
+      <div class="hero-tag reveal">Pure Herbal Wellness</div>
       <h1 class="hero-title reveal reveal-delay-1">
-        Nature's <em>purest</em><br/>
-        healing in<br/>
-        every drop
+        Rooted in<br/>
+        <em>Nature,</em> Backed<br/>
+        by Tradition
       </h1>
       <p class="hero-sub reveal reveal-delay-2">
-        100% organic herbal products handcrafted from the finest botanicals.
-        No chemicals. No fillers. Just nature — exactly as it was meant to be.
+        Discover the power to reverse your diabetes and restore vitality with pure, organic botanicals. Handcrafted, chemical-free, and exactly as nature intended.
       </p>
       <div class="hero-btns reveal reveal-delay-3">
-        <a href="#products" class="btn-primary">Explore Products</a>
+        <a href="#products" class="btn-primary">Shop the Collection</a>
         <a href="#about" class="btn-ghost">
           Our Story
           <svg viewBox="0 0 24 24" fill="none" stroke="#2D5C52" stroke-width="1.5" stroke-linecap="round">
@@ -961,6 +961,8 @@
       <span class="marquee-item">Zero Fillers <span class="marquee-dot"></span></span>
     </div>
   </div>
+
+
 
   <!-- ABOUT -->
   <section class="about" id="about">
@@ -1041,11 +1043,31 @@
         <div class="section-label reveal">Our collection</div>
         <h2 class="section-title reveal reveal-delay-1">Pure herbal <em>essentials</em></h2>
       </div>
-      <a href="#" class="view-all reveal">View All →</a>
+      <a href="#products" class="view-all reveal">View All →</a>
     </div>
     <div class="products-grid">
 
-      <div class="product-card reveal reveal-delay-3">
+      <div class="product-card reveal" style="grid-column: 1 / -1; background: var(--deep); border: 1px solid var(--sage); display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; margin-bottom: 2rem;">
+        <div class="product-img" style="background: var(--cream); height: 100%; min-height: 340px;">
+          <div class="product-tag-badge" style="background: var(--gold); color: white;">Best Value & Results</div>
+          <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; width: 100%; height: 100%;">
+             <img src="glukora-image.png" style="width: 35%; height: auto; object-fit: contain;"/>
+             <div style="font-size: 2.5rem; color: var(--sage); font-family: var(--serif); opacity: 0.6;">+</div>
+             <img src="livora-gold.png" style="width: 35%; height: auto; object-fit: contain;"/>
+          </div>
+        </div>
+        <div class="product-info" style="padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
+          <div class="product-tag-badge" style="position: static; display: inline-block; width: fit-content; margin-bottom: 1rem; background: var(--sage); color: var(--deep);">Reverse Your Diabetes</div>
+          <h3 class="product-name" style="color: var(--cream); font-size: 2rem; margin-bottom: 0.5rem;">Diabetes Reversal Bundle</h3>
+          <p class="product-desc" style="color: var(--mist); font-size: 0.9rem; margin-bottom: 1.5rem;">Glukora + Livora Gold · The ultimate synergistic approach to pancreatic and liver wellness. Addressing the root causes of diabetes from two fronts.</p>
+          <div class="product-footer" style="border-top-color: rgba(255,255,255,0.1); padding-top: 1.5rem;">
+            <div class="product-price" style="color: var(--sage); font-size: 1.8rem;">$399 USD <span style="text-decoration: line-through; font-size: 1.1rem; opacity: 0.4; margin-left: 0.5rem;">$498</span></div>
+            <a href="orderform.html" class="btn-primary" style="background: var(--sage); color: var(--deep);">Order Bundle →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1">
         <div class="product-img" style="background:#E4EFEB;">
           <div class="product-tag-badge">Special</div>
           <img src="glukora-image.png" alt="Glukora" style="width: 70%; height: auto; object-fit: contain; mix-blend-mode: multiply;"/>
@@ -1060,17 +1082,78 @@
         </div>
       </div>
 
-      <div class="product-card reveal reveal-delay-4">
+      <div class="product-card reveal reveal-delay-2">
         <div class="product-img" style="background:#FBF0CC;">
           <div class="product-tag-badge">New</div>
           <img src="livora-gold.png" alt="Livokara Gold" style="width: 70%; height: auto; object-fit: contain; mix-blend-mode: multiply;"/>
         </div>
         <div class="product-info">
           <div class="product-name">Livokara Gold</div>
-          <div class="product-desc">Turmeric · Mulethi · Saunf</div>
+          <div class="product-desc">Curcuma longa · Glycyrrhiza glabra · Foeniculum vulgare</div>
           <div class="product-footer">
             <div class="product-price">$199 USD</div>
             <a href="livora-gold.html" class="product-add" style="text-decoration: none;">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-img" style="background:#F3E8FF;">
+          <div class="product-tag-badge">Popular</div>
+          <svg viewBox="0 0 280 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:50%; height: auto; opacity: 0.8;">
+            <path d="M28,230 C24,200 22,160 28,130 C32,112 50,100 140,100 C230,100 248,112 252,130 C258,160 256,200 252,230 C248,268 220,290 140,290 C60,290 32,268 28,230Z" fill="#220A42" stroke="#4A1A78" stroke-width="1.2"/>
+            <ellipse cx="140" cy="100" rx="112" ry="22" fill="#C898F0"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Figuva</div>
+          <div class="product-desc">Ficus carica & Olea europaea · Strength & Vitality</div>
+          <div class="product-footer">
+            <div class="product-price">$149 USD</div>
+            <a href="Figuva.html" class="product-add" style="text-decoration: none;">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-4">
+        <div class="product-img" style="background:#F0FDF4;">
+          <div class="product-tag-badge">Best Seller</div>
+          <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:50%; height: auto; opacity: 0.8;">
+            <path d="M40,60 C36,86 34,122 40,142 C46,158 74,166 100,166 C126,166 154,158 160,142 C166,122 164,86 160,60Z" fill="#E8F8D8" stroke="#B8C828" stroke-width="1.2"/>
+            <path d="M160,84 C178,84 188,92 188,104 C188,116 178,126 160,126" fill="none" stroke="#B8C828" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Slimzest</div>
+          <div class="product-desc">Trachyspermum ammi & Citrus limon · Weight Management</div>
+          <div class="product-footer">
+            <div class="product-price">$129 USD</div>
+            <a href="Slimzest.html" class="product-add" style="text-decoration: none;">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-5">
+        <div class="product-img" style="background:#FDF5F6;">
+          <div class="product-tag-badge">Limited</div>
+          <svg viewBox="0 0 240 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:42%; height: auto; opacity: 0.9;">
+            <path d="M20,220 C16,188 14,148 20,120 C24,104 40,96 120,96 C200,96 216,104 220,120 C226,148 224,188 220,220 C216,254 196,274 120,274 C44,274 24,254 20,220Z" fill="#280410" stroke="#480818" stroke-width="1.2"/>
+            <ellipse cx="120" cy="96" rx="100" ry="20" fill="#8A1020"/>
+            <ellipse cx="120" cy="96" rx="100" ry="20" fill="none" stroke="#7A0818" stroke-width="1.2"/>
+            <ellipse cx="106" cy="91" rx="52" ry="9" fill="#A03040" opacity="0.25"/>
+            <text x="120" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#F0C8C0" letter-spacing="2">GLOBIVIN</text>
+            <path d="M28,160 C26,144 116,136 120,136 C124,136 214,144 212,160 L212,234 C210,250 124,258 120,258 C116,258 30,250 28,234 Z" fill="#180208" stroke="#380610" stroke-width="0.6"/>
+            <text x="120" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#F0C8C0" letter-spacing="3">GLOBIVIN</text>
+            <text x="120" y="232" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="6.5" fill="#904050" letter-spacing="2">HAEMATIC SYRUP</text>
+            <text x="120" y="244" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#703040" font-style="italic">Vitis vinifera L</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Globivin</div>
+          <div class="product-desc">Vitis vinifera L · Blood Building Haematic Syrup</div>
+          <div class="product-footer">
+            <div class="product-price">$149 USD</div>
+            <a href="globvin.html" class="product-add" style="text-decoration: none;">View Details →</a>
           </div>
         </div>
       </div>
@@ -1246,7 +1329,7 @@
         <div class="product-info">
           <div class="product-tag-badge">Scientific Research</div>
           <h3 class="product-name">The Real Cost of Diabetes</h3>
-          <p class="product-desc">Why managing forever costs more than healing once. A deep-dive into the pharmaceutical model.</p>
+          <p class="product-desc">Why managing forever costs more than reversing it once. A deep-dive into the pharmaceutical model.</p>
           <div class="read-more" style="font-family:var(--sans);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);">See the research →</div>
         </div>
       </a>
@@ -1285,7 +1368,7 @@
             <path d="M14,13 C18,11 24,12 23,17 C22,20 16,18 14,13 Z" fill="#7AAF9E" opacity="0.65"/>
             <path d="M14,19 C18,17 23,18 22,22 C21,25 16,23 14,19 Z" fill="#7AAF9E" opacity="0.5"/>
           </svg>
-          SZ Herbals
+          <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a>
         </div>
         <p>Pure herbal wellness rooted in nature. No chemicals, no compromise — just the earth's finest botanicals, delivered to you.</p>
       </div>
@@ -1294,6 +1377,8 @@
         <ul>
           <li><a href="glukora.html">Glukora</a></li>
           <li><a href="livora-gold.html">Livora Gold</a></li>
+          <li><a href="Figuva.html">Figuva</a></li>
+          <li><a href="Slimzest.html">Slimzest</a></li>
           <li><a href="blog.html">The Journal</a></li>
           <li><a href="orderform.html">Order Now</a></li>
         </ul>
@@ -1320,7 +1405,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 SZ Herbals. All rights reserved.</p>
+      <p>© 2025 <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a>. All rights reserved.</p>
       <p>Pure · Natural · Effective</p>
     </div>
   </footer>

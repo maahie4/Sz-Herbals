@@ -190,7 +190,7 @@ input[type=range]{flex:1;accent-color:var(--leaf);}
   <!-- LEFT PANEL -->
   <div class="left">
     <div class="left-content">
-      <div class="brand-tag">SZ Herbals</div>
+      <div class="brand-tag"><a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a></div>
       <h1>Request<br/>your <em>order</em><br/>personally.</h1>
       <p>We review every order before dispatch. This helps us make sure our herbal formulations are right for you — your health, your condition, your needs.</p>
 
@@ -199,7 +199,7 @@ input[type=range]{flex:1;accent-color:var(--leaf);}
           <div class="pill-color" style="background:var(--sage);"></div>
           <div class="pill-info">
             <h5>Glukora</h5>
-            <p>Pancreatic Wellness · Diabetes Support</p>
+            <p>Reverse Your Diabetes · Pancreatic Wellness</p>
           </div>
         </div>
         <div class="pill">
@@ -207,6 +207,13 @@ input[type=range]{flex:1;accent-color:var(--leaf);}
           <div class="pill-info">
             <h5>Livokara Gold</h5>
             <p>Liver Wellness · Hepatitis A, B & C</p>
+          </div>
+        </div>
+        <div class="pill">
+          <div class="pill-color" style="background:#7A0A1A;"></div>
+          <div class="pill-info">
+            <h5>Globivin</h5>
+            <p>Blood Building · Hemoglobin Support</p>
           </div>
         </div>
       </div>
@@ -217,7 +224,7 @@ input[type=range]{flex:1;accent-color:var(--leaf);}
       </div>
     </div>
     <div class="left-foot">
-      <p>szherbalss@gmail.com · SZ Herbals · 100% Organic</p>
+      <p>szherbalss@gmail.com · <a href="index.html" style="color:inherit;text-decoration:none;">SZ Herbals</a> · 100% Organic</p>
     </div>
   </div>
 
@@ -308,17 +315,41 @@ input[type=range]{flex:1;accent-color:var(--leaf);}
           <div class="field">
             <label>Which product(s) are you ordering? <span class="req">*</span></label>
             <div class="product-select-grid">
+              <div class="product-select-card" style="grid-column: 1 / -1; border-color: var(--leaf); background: rgba(61,122,104,.08);">
+                <input type="checkbox" name="product_bundle" value="Diabetes Reversal Bundle ($399)" id="pb"/>
+                <h5 style="color: var(--leaf);"><span class="product-dot-g"></span>Diabetes Reversal Bundle <span style="font-size: .8rem; color: var(--gold); margin-left: .5rem;">$399 SPECIAL</span></h5>
+                <div class="psub">Glukora + Livokara Gold</div>
+                <div class="pdesc">The complete course for diabetes reversal. Synergistic pancreatic and liver support. Most popular choice for long-term health.</div>
+              </div>
               <div class="product-select-card">
                 <input type="checkbox" name="product_glukora" value="Glukora" id="pg"/>
                 <h5><span class="product-dot-g"></span>Glukora</h5>
-                <div class="psub">Pancreatic Wellness</div>
+                <div class="psub">Reverse Your Diabetes</div>
                 <div class="pdesc">For diabetes / blood sugar support. Picrorhiza Kurroa extract.</div>
               </div>
               <div class="product-select-card">
                 <input type="checkbox" name="product_livokara" value="Livokara Gold" id="pl"/>
                 <h5><span class="product-dot-y"></span>Livokara Gold</h5>
                 <div class="psub">Liver Wellness</div>
-                <div class="pdesc">For Hepatitis A, B & C support. Turmeric, Mulethi, Saunf.</div>
+                <div class="pdesc">For Hepatitis A, B & C support. Curcuma longa, Glycyrrhiza glabra, Foeniculum vulgare.</div>
+              </div>
+              <div class="product-select-card">
+                <input type="checkbox" name="product_figuva" value="Figuva" id="pf"/>
+                <h5><span class="product-dot-p" style="width:8px;height:8px;background:#A878D8;border-radius:50%;display:inline-block;margin-right:.4rem;"></span>Figuva</h5>
+                <div class="psub">Strength & Vitality</div>
+                <div class="pdesc">Pure Ficus carica & Olea europaea syrup. For bone density, muscle mass and energy.</div>
+              </div>
+              <div class="product-select-card">
+                <input type="checkbox" name="product_slimzest" value="Slimzest" id="ps"/>
+                <h5><span class="product-dot-s" style="width:8px;height:8px;background:#A8C050;border-radius:50%;display:inline-block;margin-right:.4rem;"></span>Slimzest</h5>
+                <div class="psub">Weight Management</div>
+                <div class="pdesc">Trachyspermum ammi & Citrus limon tea. For metabolism and bloating.</div>
+              </div>
+              <div class="product-select-card">
+                <input type="checkbox" name="product_globivin" value="Globivin" id="pgv"/>
+                <h5><span class="product-dot-gv" style="width:8px;height:8px;background:#7A0A1A;border-radius:50%;display:inline-block;margin-right:.4rem;"></span>Globivin</h5>
+                <div class="psub">Blood Building Haematic</div>
+                <div class="pdesc">Pure Vitis vinifera L extract. For hemoglobin, iron levels and blood health.</div>
               </div>
             </div>
           </div>
